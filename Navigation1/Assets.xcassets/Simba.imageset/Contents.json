@@ -1,0 +1,34 @@
+{
+  "images" : [
+    {
+      "alignment-insets" : {
+        "bottom" : 0,
+        "left" : 0,
+        "right" : 0,
+        "top" : 5
+      },
+      "filename" : "9ECFD218-ED88-4566-8E7B-D25239A0B65A_1_105_c.jpeg",
+      "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "bottom" : 511,
+          "top" : 510
+        },
+        "center" : {
+          "height" : 1,
+          "mode" : "stretch"
+        },
+        "mode" : "3-part-vertical"
+      }
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "compression-type" : "automatic",
+    "localizable" : true,
+    "template-rendering-intent" : "original"
+  }
+}
