@@ -8,86 +8,67 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-    private var photoView = UIImageView(frame: CGRect(x: 16, y: 16, width: 100, height: 100))
-    var simbaImage = UIImage(named: "Simba")
-    var label = UILabel(frame: CGRect(x: 150, y: 27, width: 100, height: 40))
-    var statusLabel = UILabel(frame: CGRect(x: 130, y:75 , width: 200, height: 40))
-    var mybutton = UIButton(frame: CGRect(x: 16, y: 154, width: 362, height: 50))
-     var textField = UITextField(frame: CGRect(x: 130, y: 110, width: 240, height: 40))
-    var status : String = "Waiting for something..."
 
-
-    func setupViews() {
-        setupPhoto()
-        setupLabel()
-        setupStatus()
-        setupButton()
-        setupTextfield()
-    }
-
-    func setupPhoto(){
-        addSubview(photoView)
-        photoView.image = UIImage(named: "Simba")
+    private let photoView: UIView =  {
+        let photoView = UIView()
         photoView.layer.cornerRadius = 50
         photoView.layer.borderWidth = 3
         photoView.layer.borderColor = UIColor.white.cgColor
-    }
+        return photoView
+    }()
 
-    func setupLabel(){
-        addSubview(label)
+    private let mainLabel : UILabel = {
+        let label = UILabel()
         label.text = "Hipster Cat"
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 18)
-    }
+        return label
+    }()
 
-    func setupStatus() {
-        addSubview(statusLabel)
-        statusLabel.text = status
-        statusLabel.textColor = .gray
-        statusLabel.font  = UIFont(name: "regular", size: 14)
-    }
+    private let statusLabel : UILabel = {
+        let label = UILabel()
+        label.text = "Waiting status"
+        label.textColor = .gray
+        label.font  = UIFont(name: "regular", size: 14)
+        return label
+    }()
 
-    func setupButton() {
-        addSubview(mybutton)
-        mybutton.backgroundColor = .blue
-        mybutton.layer.cornerRadius = 4
-        mybutton.setTitle("Show status", for: .normal)
-        mybutton.layer.shadowOffset = CGSize(width: 4, height: 4)
-        mybutton.layer.shadowColor = UIColor.black.cgColor
-        mybutton.layer.shadowOpacity = 0.7
-        mybutton.layer.shadowRadius = 4
-        mybutton.addTarget(self, action: #selector(tapAction), for: .touchUpInside)
-    }
 
-    func setupTextfield () {
+    private let statusButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .blue
+        button.layer.cornerRadius = 4
+        button.setTitle("Show status", for: .normal)
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 4
+return button
+    }()
 
-        addSubview(textField)
+    private let statusTextfield: UITextField = {
+        let textField = UITextField()
         textField.backgroundColor = .white
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.cornerRadius = 12
         textField.placeholder = "Write your status"
-        textField.addTarget(self, action: #selector(textFieldAction), for: .editingChanged)
-    }
+return textField
+    }()
 
 
-
-    @objc private func textFieldAction ( ) {
-        if textField.text != nil {
-            status = textField.text!}
-        else {
-            status = "111111"
-        }
-        print("texfield")
-        }
-
-    @objc  func tapAction() {
-        if textField.text != nil {
-            status = textField.text!}
-        else {
-            status = "2222222"
-        }
-        print("tap")
+     func setupLayout(){
+        addSubview(photoView)
+        addSubview(mainLabel)
+        addSubview(statusLabel)
+        addSubview(statusTextfield)
+        addSubview(statusButton)
+        NSLayoutConstraint.activate([
+            photoView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            photoView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor , constant: 16),
+            photoView.widthAnchor.constraint(equalToConstant: 125),
+            photoView.heightAnchor.constraint(equalToConstant: 125)
+        ])
     }
     }
-
