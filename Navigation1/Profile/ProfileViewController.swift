@@ -8,7 +8,8 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
-    private let profileHeaderView = ProfileHeaderView()
+     let profileHeaderView = ProfileHeaderView()
+    let witdht = UIScreen.main.bounds.width
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -20,7 +21,7 @@ final class ProfileViewController: UIViewController {
         super.viewWillLayoutSubviews()
         profileHeaderView.backgroundColor = .lightGray
         profileHeaderView.frame = self.view.frame
-        profileHeaderView.frame = CGRect(x: 0, y: 100, width: .max, height: 750)
+        profileHeaderView.frame = CGRect(x: 0, y: 100, width: witdht, height: 750)
         profileHeaderView.setupLayout()
     }
 
