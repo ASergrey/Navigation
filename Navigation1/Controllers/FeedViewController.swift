@@ -9,10 +9,10 @@ class FeedViewController: UIViewController {
 
     private lazy var button: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .purple
+        button.backgroundColor = .systemGray
         button.layer.cornerRadius = 13
         button.setTitle("Перейти на пост", for: .normal)
-        button.setTitleColor(.lightGray, for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
