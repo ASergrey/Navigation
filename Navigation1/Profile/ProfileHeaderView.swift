@@ -8,20 +8,18 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-   lazy var screenWidth = UIScreen.main.bounds.width
+    lazy var screenWidth = UIScreen.main.bounds.width
 
 
-    lazy private var photoView: UIImageView =  {
+    private var photoView: UIImageView =  {
         let photoView = UIImageView()
-        photoView.layer.cornerRadius = 50
         photoView.image = #imageLiteral(resourceName: "Simba")
+        photoView.layer.cornerRadius = 50
         photoView.layer.borderWidth = 3
         photoView.layer.borderColor = UIColor.white.cgColor
         photoView.frame = CGRect(x: 16, y: 16, width: 100, height: 100)
         photoView.layer.opacity = 1
-//        photoView.clipsToBounds
-
-
+        photoView.clipsToBounds = true
         return photoView
     }()
 
@@ -45,7 +43,7 @@ class ProfileHeaderView: UIView {
     }()
 
 
-   lazy private var statusButton: UIButton = {
+    lazy private var statusButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .blue
         button.layer.cornerRadius = 4
@@ -55,8 +53,8 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 4
         button.frame = CGRect(x: 16, y: 160, width: (screenWidth - 32), height: 40)
-       button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-return button
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        return button
     }()
 
     private let statusTextfield: UITextField = {
@@ -65,13 +63,13 @@ return button
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.cornerRadius = 12
-        textField.placeholder = "Write your status"
+        textField.placeholder = "  Write your status"
         textField.frame = CGRect(x: 150, y: 110, width: 200, height: 40)
-return textField
+        return textField
     }()
 
 
-     func setupLayout(){
+    func setupLayout(){
         addSubview(photoView)
         addSubview(mainLabel)
         addSubview(statusLabel)
@@ -81,6 +79,7 @@ return textField
 
     @objc func buttonAction (){
         statusLabel.text =  statusTextfield.text
+        print(statusLabel.text!)
         statusTextfield.text = ""
     }
-    }
+}
